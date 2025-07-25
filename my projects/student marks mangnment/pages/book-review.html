@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex justify-center font-sans">
+    <main>
+        <div class="bg-gray-800 text-white my-2 px-6 py-4  text-lg font-semibold">BOOK REVIEW</div>
+
+        <div class="grid grid-cols-4 text-center font-semibold border-b pb-2">
+            <div>isbn no.</div>
+            <div>Title</div>
+            <div>Author</div>
+            <div>Year</div>
+        </div>
+
+        <div class="grid grid-cols-4 text-center font-semibold border-b pb-2">
+            <div>12345</div>
+            <div>A Civil Action</div>
+            <div>Jonathon Harr</div>
+            <div>1995</div>
+        </div>
+
+        <!-- Review Form -->
+        <form class="mt-6 space-y-4">
+            <div class="flex items-center gap-4">
+                <label class="w-20 font-medium">Scale:</label>
+                <input type="range" min="1" max="5" class="w-64" />
+            </div>
+
+            <div class="flex items-center gap-4">
+                <label class="w-20 font-medium">Text:</label>
+                <input type="text" value="content of book was good" class="border rounded px-3 py-1 w-full max-w-md" />
+            </div>
+
+            <!--submit button-->
+            <button class="bg-green-500 text-white m-2 px-2 py-2 rounded">submit</button>
+    </main>
+</body>
+
+</html>
