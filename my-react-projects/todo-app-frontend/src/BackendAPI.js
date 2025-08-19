@@ -46,7 +46,19 @@ async function callUpdateApi(apipath, params, body) {
     });
 }
 
+async function callDeleteApi(apipath, params) {
+  return await axios.delete(host + apipath, { params: params })
+    .then(response => {
+      console.log(`callDeleteApi response ${JSON.stringify(response.data)}`);
+      return response.data;
+    })
+    .catch(error => {
+      alert(`callDeleteApi call got failed, error: ${error}`);
+      return null;
+    });
+}
 
 
 
-export {callCreateApi,callAllApi,callUpdateApi}
+
+export {callCreateApi,callAllApi,callUpdateApi,callDeleteApi}

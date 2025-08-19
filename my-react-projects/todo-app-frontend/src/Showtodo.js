@@ -1,4 +1,4 @@
-import { callAllApi, callUpdateApi } from "./BackendAPI";
+import { callAllApi, callUpdateApi ,callDeleteApi} from "./BackendAPI";
 function Showtodo(props) {
   const Arr = props.todo;
   console.log(JSON.stringify(Arr))
@@ -8,6 +8,16 @@ function Showtodo(props) {
       '/update-todo',
       { 'todoId': todoId },
       { status: 'completed', completionDate: new Date() }
+    )
+
+    let todoList = await callAllApi('/read-todos')
+    props.setTodo(todoList);
+  }
+
+    async function handleDeleteClick(e, todoId) {
+    await callDeleteApi(
+      '/delete-todo',
+      { 'todoId': todoId }
     )
 
     let todoList = await callAllApi('/read-todos')
@@ -24,6 +34,7 @@ function Showtodo(props) {
               <th className="py-3 px-4 text-left border border-gray-300">Todo Title</th>
               <th className="py-3 px-4 text-left border border-gray-300">Due Date</th>
               <th className="py-3 px-4 text-center border border-gray-300">Mark Done</th>
+              <th className="py-3 px-4 text-center border border-gray-300">undo</th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +57,15 @@ function Showtodo(props) {
                           title="Mark as Done"
                         >
                           ✅
+                        </button>
+                      </td>
+                        <td className="py-3 px-4 border border-gray-300 text-center">
+                        <button
+                          onClick={(e) => handleDeleteClick(e, value.todoId)}
+                          className="text-green-600 hover:text-green-800 text-xl"
+                          title="Mark as Done"
+                        >
+                          delete
                         </button>
                       </td>
                     </tr>
